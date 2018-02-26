@@ -63,8 +63,9 @@ func Handler() {
 						for _, dev := range instances.Reservations[r].Instances[i].BlockDeviceMappings {
 							logrus.Info("name: ", *keys.Value, "  volume_id: ", *dev.Ebs.VolumeId)
 							ssi.Snapshots = append(ssi.Snapshots, Snapshot{
-								VolumeId:    *dev.Ebs.VolumeId,
-								Description: "lambda.create_ebs_snapshots - " + *keys.Value + " - " + *dev.Ebs.VolumeId,
+								VolumeId: *dev.Ebs.VolumeId,
+								Description: "lambda.create_ebs_snapshots - " + *keys.Value +
+									" - " + *dev.Ebs.VolumeId,
 							})
 						}
 					}
